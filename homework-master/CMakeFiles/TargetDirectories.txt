@@ -1,0 +1,3 @@
+/mnt/c/Users/Lucas/Desktop/homework-master/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Lucas/Desktop/homework-master/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Lucas/Desktop/homework-master/CMakeFiles/runTest.dir
