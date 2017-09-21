@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/hw1.dir/main.cpp.o CMakeFiles/hw1.dir/Media.cpp.o CMakeFiles/hw1.dir/Shapes.cpp.o  -o hw1 -rdynamic /usr/local/lib/libgtest.a -lpthread 
