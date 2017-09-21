@@ -25,7 +25,7 @@ bool compDecreasingArea(Shape* b,Shape* c)
 
 bool compIncreasingCompactness(Shape* b,Shape* c)
 {
-    return (b->area()+b->perimeter()) < (c->area()+c->perimeter());
+    return (b->area()/b->perimeter()) < (c->area()/c->perimeter());
 }
 
 class Sort {
