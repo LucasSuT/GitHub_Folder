@@ -1,0 +1,3 @@
+/mnt/c/Users/Lucas/Documents/GitHub_Folder/homework-master/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Lucas/Documents/GitHub_Folder/homework-master/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Lucas/Documents/GitHub_Folder/homework-master/CMakeFiles/hw1.dir
