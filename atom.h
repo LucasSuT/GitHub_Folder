@@ -16,7 +16,7 @@ public:
   string _symbol;
   void test();
   bool match(Number number);
-  string match(Variable variable);
+  bool match(Variable variable);
 };
 
 #endif

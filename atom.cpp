@@ -15,7 +15,7 @@ bool Atom :: match(Number number)
     return false;
 }
 
-string Atom :: match(Variable variable)
+bool Atom :: match(Variable variable)
 {
     /*if(variable.value()==_symbol)
     {*/
@@ -23,10 +23,10 @@ string Atom :: match(Variable variable)
     if(variable.value()=="")
     {
       returnstring+=variable._symbol+" = "+_symbol;
-      return returnstring;
+      return true;
     }
-    else if(variable.value()==_symbol)return returnstring+=variable._symbol+" = "+_symbol;
-    else if(variable.value()!=_symbol)return returnstring+="false";
-    return "NULL";
+    else if(variable.value()==_symbol)return true;
+    else if(variable.value()!=_symbol)return false;
+    return true;
     //}
 }
