@@ -3,13 +3,12 @@
 #include "number.h"
 #include "atom.h"
 #include "variable.h"
-//test Number.value()
+
 TEST (Number,ctor) {
-    /*int i=25;
+    int i=25;
     Number n25(i);
-    ASSERT_EQ("25", n25.value());*/
+    ASSERT_EQ("25", n25.value());
 }
-/*
 //test Number.symbol()
 TEST (Number, symbol) {
     Number n25(25);
@@ -25,7 +24,7 @@ TEST (Number, matchSuccess) {
 //false.
 TEST (Number, matchFailureDiffValue) {
     Number n25(25);
-    Number n0("0");
+    Number n0(0);
     ASSERT_FALSE(n25.match(n0));
 }
 //?- 25=tom.
@@ -46,27 +45,24 @@ TEST (Number, matchSuccessToVar) {
 //false.
 TEST (Atom, matchFailureDiffConstant) {
     Atom tom("tom");
-    Number n25("25");
+    Number n25(25);
     ASSERT_FALSE(tom.match(n25));
 }
-
 // ?- tom = X.
 // X = tom.
 TEST (Atom, matchSuccessToVar) {
     Atom tom("tom");
     Variable X("X");
-    ASSERT_EQ("X = tom",tom.match(X));
+    ASSERT_TRUE(tom.match(X));
 }
-
 // ?- X=tom, tom=X.
 // X = tom.
 TEST (Atom, matchSuccessToVarInstantedToDiffConstant) {
     Atom tom("tom");
     Variable X("X");
     X.match(tom);
-    ASSERT_EQ("X = tom",tom.match(X));
+    ASSERT_TRUE(tom.match(X));
 }
-
 // ?- X=jerry, tom=X.
 // false.
 TEST (Atom, matchFailureToVarInstantedToDiffConstant) {
@@ -74,37 +70,34 @@ TEST (Atom, matchFailureToVarInstantedToDiffConstant) {
     Atom tom("tom");
     Atom jerry("jerry");
     X.match(jerry);
-    //cout<<tom.match(X);
-    ASSERT_EQ("false",tom.match(X));
+    ASSERT_FALSE(tom.match(X));
 }
-
 // ?- X = 5.
 // X = 5.
 TEST (Variable, matchSuccessToNumber) {
     Variable X("X");
-    Number n5("5");
-    ASSERT_EQ("X = 5",X.match(n5));
+    Number n5(5);
+    ASSERT_TRUE(X.match(n5));
 }
-
 // ?- X=25, X= 100.
 // false.
 TEST (Variable, matchFailureToTwoDiffNumbers) {
     Variable X("X");
-    Number n25("25");
-    Number n100("100");
+    Number n25(25);
+    Number n100(100);
     X.match(n25);
-    ASSERT_EQ("false",X.match(n100));
+    ASSERT_FALSE(X.match(n100));
 }
-
 // ?- X=tom, X= 25.
 // false.
 TEST (Variable, matchSuccessToAtomThenFailureToNumber) {
     Variable X("X");
-    Number n25("25");
+    Number n25(25);
     Atom tom("tom");
     X.match(tom);
-    ASSERT_EQ("false",X.match(n25));
+    ASSERT_FALSE(X.match(n25));
 }
+/*
 //?- tom=X, 25=X.
 //false.
 TEST (Variable, matchSuccessToAtomThenFailureToNumber2) {

@@ -1,6 +1,6 @@
 #include "number.h"
-#include "variable.h"
 #include "atom.h"
+#include "variable.h"
 
 bool Number :: match( Number number )
 {

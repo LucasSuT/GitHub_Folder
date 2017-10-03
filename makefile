@@ -7,11 +7,11 @@ else
 endif
 mainNumber.o: mainNumber.cpp utTerm.h
 	g++ -std=gnu++11 -c mainNumber.cpp
-atom.o: atom.h atom.cpp
-	g++ -std=gnu++11 -c atom.h atom.cpp
-number.o: number.h number.cpp
-	g++ -std=gnu++11 -c number.h number.cpp
-variable.o: variable.h variable.cpp
+atom.o: atom.h variable.h number.h atom.cpp
+	g++ -std=gnu++11 -c atom.cpp
+number.o: atom.h variable.h number.h number.cpp
+	g++ -std=gnu++11 -c number.cpp
+variable.o: atom.h variable.h number.h variable.cpp
 	g++ -std=gnu++11 -c variable.cpp
 clean:
 ifeq (${OS}, Windows_NT)
