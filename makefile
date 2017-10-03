@@ -7,30 +7,28 @@ else
 		g++ -o hw2 mainNumber.o atom.o number.o variable.o -lgtest -lpthread
 endif
 mainNumber.o: mainNumber.cpp utTerm.h atom.h number.h variable.h
-	g++ -std=c++11 -c mainNumber.cpp
+	g++ -std=gnu++11 -c mainNumber.cpp
 atom.o: atom.h atom.cpp
-	g++ -std=c++11 -c  atom.cpp
+	g++ -std=gnu++11 -c atom.h atom.cpp
 number.o: number.h number.cpp
-	g++ -std=c++11 -c  number.cpp
+	g++ -std=gnu++11 -c number.h number.cpp
 variable.o: variable.h variable.cpp
-	g++ -std=c++11 -c  variable.cpp
-#mianNumber.o: mainNumber.cpp utTerm.h
-	#g++ -std=gnu++0x -c mainNumber.cpp
+	g++ -std=gnu++11 -c variable.h variable.cpp
 
-madRace: mainMadRace.o
-	g++ -o madRace mainMadRace.o -lgtest -lpthread
-mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
-	g++ -std=c++11 -c mainMadRace.cpp
+#madRace: mainMadRace.o
+	#g++ -o madRace mainMadRace.o -lgtest -lpthread
+#mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
+	#g++ -std=c++11 -c mainMadRace.cpp
 
-utAtom: mainAtom.o
-	g++ -o utAtom mainAtom.o -lgtest -lpthread
-mainAtom.o: mainAtom.cpp utAtom.h atom.h Number.h
-	g++ -std=c++11 -c mainAtom.cpp
+#utAtom: mainAtom.o
+	#g++ -o utAtom mainAtom.o -lgtest -lpthread
+#mainAtom.o: mainAtom.cpp utAtom.h atom.h Number.h
+	#g++ -std=c++11 -c mainAtom.cpp
 
-utVariable: mainVariable.o
-		g++ -o utVariable mainVariable.o -lgtest -lpthread
-mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ -std=c++11 -c mainVariable.cpp
+#utVariable: mainVariable.o
+	#	g++ -o utVariable mainVariable.o -lgtest -lpthread
+#mainVariable.o: mainVariable.cpp utVariable.h variable.h
+	#	g++ -std=c++11 -c mainVariable.cpp
 
 #exp: mainExp.o
 #	g++ -o exp mainExp.o -lgtest -lpthread
