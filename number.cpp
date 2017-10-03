@@ -15,5 +15,14 @@ bool Number :: match( Atom atom )
 
 bool Number :: match(Variable variable)
 {
-    return true;
+    if(_value=="")
+    {
+      _value=variable._symbol;
+      return true;
+    }
+    else if(_value!="")
+    {
+      if(_value==variable._symbol)return true;
+    }
+    else return false;
 }
