@@ -2,6 +2,7 @@
 #define NUMBER_H
 
 #include <string>
+#include <iostream>
 using std::string;
 using namespace std;
 
@@ -11,8 +12,15 @@ class Variable;
 class Number
 {
 public:
-  string const _symbol,_value;
-  Number(string s):_symbol(s),_value(s){}
+  string _symbol,_value;
+  //Number(string s):_symbol(s),_value(s){}
+  Number(int i)
+  {
+    string s=to_string(i);
+    _symbol=s;
+    _value=s;
+    //cout<<_symbol;
+  }
   string value(){ return _value; }
   string symbol(){return _symbol;}
   bool match( Number number );
