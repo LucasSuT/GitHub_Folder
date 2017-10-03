@@ -18,7 +18,7 @@ public:
   {
     string s=to_string(i);
     _symbol=s;
-    //_value=s;
+    _value=s;
   }
   string value(){ return _value; }
   string symbol(){return _symbol;}
