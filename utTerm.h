@@ -97,7 +97,6 @@ TEST (Variable, matchSuccessToAtomThenFailureToNumber) {
     X.match(tom);
     ASSERT_FALSE(X.match(n25));
 }
-/*
 //?- tom=X, 25=X.
 //false.
 TEST (Variable, matchSuccessToAtomThenFailureToNumber2) {
@@ -107,5 +106,5 @@ TEST (Variable, matchSuccessToAtomThenFailureToNumber2) {
 //true.
 TEST(Variable, reAssignTheSameAtom){
     ASSERT_TRUE(true);
-}*/
+}
 #endif
