@@ -13,7 +13,7 @@ atom.o: atom.h atom.cpp
 number.o: number.h number.cpp
 	g++ -std=gnu++11 -c number.h number.cpp
 variable.o: variable.h variable.cpp
-	g++ -std=gnu++11 -c variable.h variable.cpp
+	g++ -std=gnu++11 -c variable.cpp
 
 #madRace: mainMadRace.o
 	#g++ -o madRace mainMadRace.o -lgtest -lpthread
