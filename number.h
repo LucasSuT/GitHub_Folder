@@ -12,17 +12,18 @@ class Atom;
 class Number
 {
 public:
-  string _symbol,_value;
+  string _symbol,_value="";
   //Number(string s):_symbol(s),_value(s){}
   Number(int i)
   {
     string s=to_string(i);
     _symbol=s;
-    _value=s;
+    //_value=s;
   }
   string value(){ return _value; }
   string symbol(){return _symbol;}
   bool match( Number number );
+  //bool match(Number &number);
   bool match( Atom atom );
   bool match(Variable variable);
 private:

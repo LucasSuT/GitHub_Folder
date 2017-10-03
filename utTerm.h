@@ -7,7 +7,7 @@
 TEST (Number,ctor) {
     int i=25;
     Number n25(i);
-    ASSERT_EQ("25", n25.value());
+    ASSERT_EQ("", n25.value());
 }
 //test Number.symbol()
 TEST (Number, symbol) {

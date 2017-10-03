@@ -4,7 +4,7 @@
 
 bool Number :: match( Number number )
 {
-  if(number.value()==_value)return true;
+  if(number.symbol()==_symbol)return true;
   else return false;
 }
 
@@ -15,5 +15,5 @@ bool Number :: match( Atom atom )
 
 bool Number :: match(Variable variable)
 {
-  return true;
+    return true;
 }
