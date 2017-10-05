@@ -12,8 +12,8 @@ public:
   Variable(string s):_symbol(s){}
   string const _symbol;
   string value(){ return _value; }
-  bool match(Atom atom);
-  bool match(Number number);
+  bool match(Atom& atom);
+  bool match(Number& number);
 private:
   string _value="";
   bool _assignable = true;

@@ -22,10 +22,10 @@ public:
   }
   string value(){ return _value; }
   string symbol(){return _symbol;}
-  bool match( Number number );
-  bool match( Atom atom );
+  bool match( Number& number );
+  bool match( Atom& atom );
   //bool match(Variable variable);
-  bool match(Variable &variable);
+  bool match(Variable& variable);
 private:
   bool _modifiable=true;
 };

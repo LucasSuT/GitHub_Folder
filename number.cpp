@@ -2,18 +2,18 @@
 #include "atom.h"
 #include "variable.h"
 
-bool Number :: match( Number number )
+bool Number :: match( Number& number )
 {
   if(number.symbol()==_symbol)return true;
   else return false;
 }
 
-bool Number :: match( Atom atom )
+bool Number :: match( Atom& atom )
 {
   return false;
 }
 
-bool Number :: match(Variable &variable)
+bool Number :: match(Variable& variable)
 {
   /*  if(_value=="")
     {

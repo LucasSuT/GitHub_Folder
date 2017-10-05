@@ -10,12 +10,12 @@ void Atom :: test()
     cout<<"test";
 }
 
-bool Atom :: match(Number number)
+bool Atom :: match(Number& number)
 {
     return false;
 }
 
-bool Atom :: match(Variable variable)
+bool Atom :: match(Variable& variable)
 {
     /*if(variable.value()==_symbol)
     {*/

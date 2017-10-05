@@ -15,8 +15,8 @@ public:
   bool operator ==(Atom a) {return _symbol == a._symbol;}
   string _symbol;
   void test();
-  bool match(Number number);
-  bool match(Variable variable);
+  bool match(Number& number);
+  bool match(Variable& variable);
 };
 
 #endif

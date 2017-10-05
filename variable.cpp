@@ -2,13 +2,13 @@
 #include "atom.h"
 #include "number.h"
 
-bool Variable :: match(Atom atom)
+bool Variable :: match(Atom& atom)
 {
   _value = atom._symbol ;
   _assignable = false;
   return true;
 }
-bool Variable :: match( Number number )
+bool Variable :: match( Number& number )
 {
   string returnString="";
   if(_value=="")

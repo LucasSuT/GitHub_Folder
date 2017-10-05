@@ -61,6 +61,7 @@ TEST (Atom, matchSuccessToVarInstantedToDiffConstant) {
     Atom tom("tom");
     Variable X("X");
     X.match(tom);
+    //cout<<X.value();
     ASSERT_TRUE(tom.match(X));
 }
 // ?- X=jerry, tom=X.
