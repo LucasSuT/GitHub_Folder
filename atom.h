@@ -31,7 +31,11 @@ public:
   }
   bool match(Term & term) {
     //cout<<symbol()<<endl;
-    if(term._type=="Variable")return true;
+    if(term._type=="Variable")
+    {
+      *(term._value)=symbol();
+      return true;
+    }
     else Term::match(term);
     //return true;
   }
