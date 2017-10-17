@@ -21,7 +21,9 @@ TEST (Variable , haveValue){
   Atom jerry ("jerry");
   Variable X("X");
   ASSERT_TRUE(X.match(tom));
-  ASSERT_FALSE(X.match(jerry));
+  //cout<<X.value()<<endl;
+  ASSERT_TRUE(X.match(jerry));
+  //cout<<X.value()<<endl;
 }
 
 // ?- X=2.7182.
