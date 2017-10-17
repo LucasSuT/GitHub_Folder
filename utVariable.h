@@ -22,7 +22,7 @@ TEST (Variable , haveValue){
   Variable X("X");
   ASSERT_TRUE(X.match(tom));
   //cout<<X.value()<<endl;
-  ASSERT_TRUE(X.match(jerry));
+  ASSERT_FALSE(X.match(jerry));
   //cout<<X.value()<<endl;
 }
 

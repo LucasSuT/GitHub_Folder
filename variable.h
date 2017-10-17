@@ -40,7 +40,7 @@ public:
       }
     }
 
-    return true;
+    return ret;
   }
   //vector<Term *>link;
   string address="";
