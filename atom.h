@@ -6,17 +6,36 @@
 using std::string;
 using namespace std;
 
-class Number;
-class Variable;
 
-class Atom {
+class Term{
+
 public:
-  Atom (string s):_symbol(s) {/*cout<<_symbol<<"\n";*/}
-  bool operator ==(Atom a) {return _symbol == a._symbol;}
-  string _symbol;
-  void test();
-  bool match(Number& number);
-  bool match(Variable& variable);
+  virtual string symbol() const= 0;
+  virtual string value() 
+  {
+    return symbol();
+  };
+
+  virtual bool match(Term & term) {
+    //cout<<symbol()<<endl;
+    return symbol() == term.symbol();
+  }
+  string _type;
+  string  *_value;
 };
+
+class Atom : public Term{
+public:
+  Atom (string s):_symbol(s) {
+    _type="Atom";
+  }
+
+  string symbol() const{
+    return _symbol;
+  }
+
+  string _symbol;
+};
+
 
 #endif

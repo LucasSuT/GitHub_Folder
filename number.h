@@ -2,32 +2,43 @@
 #define NUMBER_H
 
 #include <string>
-#include <iostream>
+#include "atom.h"
+#include <sstream>
+using std::string;
+using std::to_string;
 
-using namespace std;
-
-class Variable;
-class Atom;
-
-class Number
+class Number : public Term
 {
 public:
-  string _symbol,_value="";
-  //Number(string s):_symbol(s),_value(s){}
-  Number(int i)
+  Number(double s):_symbol(std::to_string(s))
   {
-    string s=to_string(i);
-    _symbol=s;
-    _value=s;
+    _type="Number";
+    ostringstream os;
+    os << s;
+    string str = os.str();
+    //cout<<str;
+    _value=str;
   }
-  string value(){ return _value; }
-  string symbol(){return _symbol;}
-  bool match( Number& number );
-  bool match( Atom& atom );
-  //bool match(Variable variable);
-  bool match(Variable& variable);
-private:
-  bool _modifiable=true;
-};
+  string const _symbol;
+  string symbol() const
+  {
+    return _symbol;
+  }
+  string value()
+  {
+     return _value;
+   }
+   bool match(Term & term){
+     bool ret = _assignable;
+     if(_assignable){
+       _value = term.symbol();
+       _assignable = false;
+     }
+     return ret;
+   }
 
+ private:
+   string _value;
+   bool _assignable = true;
+};
 #endif
