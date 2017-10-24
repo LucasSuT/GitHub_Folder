@@ -25,6 +25,6 @@ atom.o: atom.cpp
 variable.o: variable.h term.h
 
 clean:
-	rm -f *.o utList
+	rm -f *.o *hw4
 stat:
 	wc *.h *.cpp
