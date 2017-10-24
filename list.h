@@ -19,7 +19,8 @@ public:
     /*Number *n=static_cast<Number*>(&_elements[0]);
     if(n)cout<<"yes"<<endl;
     else cout<<"no"<<endl;*/
-    string s="[";
+
+    /*string s="[";
     if(_elements.size()>0)
     {
       for(int i=_elements.size()-1;i>0;i--)
@@ -31,7 +32,8 @@ public:
       s+="]";
     }
     else s+="]";
-    return s;
+    return s;*/
+    return value();
   }
   string value() const
   {

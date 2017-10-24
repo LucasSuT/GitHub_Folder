@@ -24,18 +24,18 @@ TEST(List, Numbers) {
   Number _8128(8128),_496(496);
   vector<Term *> args = {&_8128,&_496};
   List l(args);
-  EXPECT_EQ(string("[496, 8128]"), l.symbol());
+  EXPECT_EQ(string("[8128, 496]"), l.symbol());
 }
 
 // Given there are two atoms: "terence_tao", "alan_mathison_turing"
 // When create a new list with the Atoms
 // Then #symbol() of the list should return "[terence_tao, alan_mathison_turing]"
 TEST(List, Atoms) {
-  /*Atom a("terence_tao"),b("alan_mathison_turing");
+  Atom a("terence_tao"),b("alan_mathison_turing");
   vector<Term *> args = {&a,&b};
   List l(args);
   EXPECT_EQ(string("[terence_tao, alan_mathison_turing]"), l.symbol());
-  */
+  
 }
 
 // Given there are two variables: X, Y
