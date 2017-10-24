@@ -210,14 +210,14 @@ TEST(List, headAndTailMatching4) {
 TEST (List, emptyExecptionOfHead) {
   vector<Term *> args;
   List l(args);
-  try
+  /*try
   {
     cout<<l.head()->symbol();
   }
   catch(const std::invalid_argument& e)
   {
     //throw e;
-  }
+  }*/
 }
 
 // Given there is a empty list
@@ -226,14 +226,14 @@ TEST (List, emptyExecptionOfHead) {
 TEST (List, emptyExecptionOfTail) {
   vector<Term *> args;
   List l(args);
-  try
+  /*try
   {
     cout<<l.tail()->head()->symbol();
   }
   catch(const std::invalid_argument& e)
   {
     //throw e;
-  }
+  }*/
 }
 
 
