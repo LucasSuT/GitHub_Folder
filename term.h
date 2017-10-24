@@ -6,6 +6,7 @@
 #include <typeinfo>
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 //#include "atom.h"
 //#include "variable.h"
 class Variable;
