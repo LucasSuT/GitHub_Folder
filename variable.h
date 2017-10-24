@@ -2,51 +2,29 @@
 #define VARIABLE_H
 
 #include <string>
-#include "atom.h"
-#include <vector>
+#include "term.h"
 using std::string;
 
-class Variable : public Term{
+class Variable : public Term {
 public:
-  Variable(string s):_symbol(s){_type="Variable";}
-  string const _symbol;
-  string value()
-  {
-    if(*_value=="")return symbol();
-     return *_value;
-   }
-  string symbol() const
-  {
-    return _symbol;
-  }
-  bool match(Term & term)
-  {
-    bool ret = _assignable;
-    Variable *ps = dynamic_cast<Variable *>(&term);
-    if(ps)
-    {
-      //cout<<"in"<<endl;
-      //cout<<_value<<"   "<<ps->_value<<endl;
-      if(*(ps->_value)!="")*_value=*(ps->_value);
-      ps->_value=_value;
-      //cout<<_value<<"   "<<ps->_value<<endl;
-    }
+  Variable(string s):Term(s), _inst(0){}
+  string value() const {
+    if (_inst)
+      return _inst->value();
     else
-    {
-      if(_assignable)
-      {
-        *_value = term.value();
-        _assignable = false;
-      }
-    }
-
-    return ret;
+      return Term::value();
   }
-  //vector<Term *>link;
-  string address="";
-  string *_value=&address;
+  bool match( Term & term ){
+    if (this == &term)
+      return true;
+    if(!_inst){
+      _inst = &term ;
+      return true;
+    }
+    return _inst->match(term);
+  }
 private:
-  bool _assignable = true;
+  Term * _inst;
 };
 
 #endif

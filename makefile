@@ -1,23 +1,30 @@
+#all: utList utAtom utVariable
+all: hw4
 
-all:hw3
-
-hw3: mainAtom.o number.o atom.o variable.o
+hw4:	mainList.o term.o atom.o
 ifeq (${OS}, Windows_NT)
-	 g++ -o hw3 mainAtom.o number.o atom.o variable.o -lgtest
+		g++ -o hw4 mainList.o term.o atom.o -lgtest
 else
-	 g++ -o hw3 mainAtom.o number.o atom.o variable.o -lgtest -lpthread
+		g++ -o hw4 mainList.o term.o atom.o -lgtest -lpthread
 endif
+utAtom: mainAtom.o atom.o term.o
+	g++	-o	utAtom mainAtom.o	term.o atom.o -lgtest -lpthread
+utVariable: mainVariable.o atom.o term.o
+	g++	-o	utVariable mainVariable.o	term.o atom.o -lgtest -lpthread
 
-mainAtom.o: mainAtom.cpp 
-	 g++ --std=gnu++11 -c mainAtom.cpp
-number.o: number.h number.cpp
-	 g++ --std=gnu++11 -c number.cpp
-atom.o: atom.h atom.cpp
-	 g++ --std=gnu++11 -c atom.cpp
-variable.o: variable.h variable.cpp
-	 g++ --std=gnu++11 -c variable.cpp
+mainVariable.o: mainVariable.cpp utVariable.h variable.h term.h
+	g++ -std=gnu++11 -c mainVariable.cpp
+mainAtom.o: mainAtom.cpp utAtom.h
+	g++ -std=gnu++11 -c mainAtom.cpp
+mainList.o: mainList.cpp utList.h
+	g++ -std=gnu++11 -c mainList.cpp
+term.o: term.cpp
+	g++ -std=gnu++11 -c term.cpp
+atom.o: atom.cpp
+	g++ -std=gnu++11 -c atom.cpp
+variable.o: variable.h term.h
 
 clean:
-	 rm -f *.o mainAtom *hw3
+	rm -f *.o utList
 stat:
-	 wc *.h *.cpp
+	wc *.h *.cpp
