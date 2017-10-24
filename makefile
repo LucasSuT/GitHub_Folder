@@ -1,5 +1,5 @@
 #all: utList utAtom utVariable
-all: hw4
+all: hw4 
 
 hw4:	mainList.o term.o atom.o
 ifeq (${OS}, Windows_NT)
@@ -18,11 +18,11 @@ mainAtom.o: mainAtom.cpp utAtom.h
 	g++ -std=gnu++11 -c mainAtom.cpp
 mainList.o: mainList.cpp utList.h
 	g++ -std=gnu++11 -c mainList.cpp
-term.o: term.cpp
+term.o: term.cpp term.h variable.h
 	g++ -std=gnu++11 -c term.cpp
-atom.o: atom.cpp
+atom.o: atom.cpp atom.h term.h number.h
 	g++ -std=gnu++11 -c atom.cpp
-variable.o: variable.h term.h
+
 
 clean:
 	rm -f *.o *hw4

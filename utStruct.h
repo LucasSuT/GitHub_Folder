@@ -222,4 +222,3 @@ TEST(Struct, nested_struct_and_multiVariable)
   ASSERT_EQ("s1(s2(Y), X)",s1.symbol());
   ASSERT_EQ("s1(s2(kent_beck), kent_beck)",s1.value());
 }
-
