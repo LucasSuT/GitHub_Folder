@@ -218,6 +218,7 @@ TEST (List, emptyExecptionOfHead) {
   {
     //throw e;
   }*/
+  //cout<<l.head()->symbol();
 }
 
 // Given there is a empty list
@@ -234,6 +235,7 @@ TEST (List, emptyExecptionOfTail) {
   {
     //throw e;
   }*/
+  //cout<<l.tail()->head()->symbol();
 }
 
 

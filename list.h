@@ -39,18 +39,18 @@ public:
   }
   Term * head() const
   {
-    /*if(_elements.size()==0)
+    if(_elements.size()==0)
     {
       throw std::invalid_argument("Accessing head in an empty list");
-    }*/
+    }
     return _elements[0];
   }
   List * tail() const
   {
-    /*if(_elements.size()==0)
+    if(_elements.size()==0)
     {
       throw std::invalid_argument("Accessing tail in an empty list");
-    }*/
+    }
     List *l=new List();
     l->_elements=_elements;
     if(l->_elements.size()>0)l->_elements.erase(l->_elements.begin());
