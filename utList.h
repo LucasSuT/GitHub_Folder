@@ -104,6 +104,7 @@ TEST(List, matchToVarOccuredInListShouldFail) {
   vector<Term *> args = {&_496,&X,&a};
   List l(args);
   EXPECT_TRUE(l.match(X));
+
 }
 
 // ?- [496, X, terence_tao] = [496, X, terence_tao].
@@ -218,7 +219,7 @@ TEST (List, emptyExecptionOfHead) {
   {
     //throw e;
   }*/
-  //cout<<l.head()->symbol();
+  l.head()->symbol();
 }
 
 // Given there is a empty list
@@ -235,7 +236,7 @@ TEST (List, emptyExecptionOfTail) {
   {
     //throw e;
   }*/
-  //cout<<l.tail()->head()->symbol();
+  l.tail()->head()->symbol();
 }
 
 

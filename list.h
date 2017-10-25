@@ -41,6 +41,7 @@ public:
   {
     if(_elements.size()==0)
     {
+      return new Atom("fail");
       throw std::invalid_argument("Accessing head in an empty list");
     }
     return _elements[0];
@@ -49,6 +50,7 @@ public:
   {
     if(_elements.size()==0)
     {
+      return new List;
       throw std::invalid_argument("Accessing tail in an empty list");
     }
     List *l=new List();
