@@ -234,6 +234,13 @@ TEST (List, emptyExecptionOfTail) {
   }
   catch(std::string *e)
   {
+    //cout<<"1";
+    //cout<<*e;
+    //throw e;
+  }
+  catch(std::string e)
+  {
+    //cout<<"2";
     //cout<<*e;
     //throw e;
   }

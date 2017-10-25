@@ -51,7 +51,8 @@ public:
     if(_elements.size()==0)
     {
       //return new List;
-      throw new string("Accessing tail in an empty list");
+      throw string("Accessing tail in an empty list");
+      //throw new string("Accessing tail in an empty list");
     }
     List *l=new List();
     l->_elements=_elements;
