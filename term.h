@@ -17,6 +17,14 @@ class Term{
 public:
   virtual string symbol() const{return _symbol;}
   virtual string value() const{return symbol();}
+  virtual Term * args(int index)
+  {
+    return nullptr;
+  }
+  virtual int arity()
+  {
+    return 0;
+  }
   virtual bool match(Term & a);//{
     /*if (typeid(a) ==  typeid(Variable))
       return a.match(*this);

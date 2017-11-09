@@ -6,6 +6,9 @@
 
 #include <string>
 #include <vector>
+#include <list>
+#include <iostream>
+using namespace std;
 using std::string;
 using std::vector;
 
@@ -22,6 +25,7 @@ public:
         return NUMBER;
       }  else if (islower(currentChar())) {
         string s = extractAtom();
+        //cout<<s<<endl;
         processToken<ATOM>(s);
         return ATOM;
       } else if (isSpecialCh(currentChar())) {
@@ -41,10 +45,14 @@ public:
   int tokenValue() const {return _tokenValue;}
 
   int skipLeadingWhiteSpace() {
-    for (; (buffer[pos] == ' ' || buffer[pos] == '\t') && pos<buffer.length(); ++pos);
+    for (; (buffer[pos] == ' ' || buffer[pos] == '\t') && pos<buffer.length(); ++pos)
+    {
+      //cout<<buffer[pos]<<" "<<pos<<"\n";
+    }
     return position();
   }
 
+  int bufferlength(){return buffer.length();}
   int position() const {return pos;}
 
   char currentChar() {

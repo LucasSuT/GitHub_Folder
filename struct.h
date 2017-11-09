@@ -17,16 +17,26 @@ public:
   Term * args(int index) {
     return _args[index];
   }
-
+  int arity()
+  {
+    return _args.size();
+  }
   Atom & name() {
     return _name;
   }
   string symbol() const {
     string ret = _name.symbol() + "(";
     std::vector<Term *>::const_iterator it = _args.begin();
-    for (; it != _args.end()-1; ++it)
-      ret += (*it)->symbol()+", ";
-    ret  += (*it)->symbol()+")";
+    if(!_args.empty())
+    {
+      for (; it != _args.end()-1; ++it)
+        ret += (*it)->symbol()+", ";
+      ret  += (*it)->symbol()+")";
+    }
+    else
+    {
+      ret+=")";
+    }
     return ret;
   }
   string value() const {
