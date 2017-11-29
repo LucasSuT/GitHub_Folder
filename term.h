@@ -17,6 +17,7 @@ class Term{
 public:
   virtual string symbol() const{return _symbol;}
   virtual string value() const{return symbol();}
+  virtual Term *getinst(){return nullptr;}
   virtual Term * args(int index)
   {
     return nullptr;

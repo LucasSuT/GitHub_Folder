@@ -1,11 +1,11 @@
 #all: utList utAtom utVariable
-all: hw5
+all: hw6
 
-hw5:	mainScanner.o term.o atom.o
+hw6:	mainScanner.o term.o atom.o
 ifeq (${OS}, Windows_NT)
-		g++ -o hw5 mainScanner.o term.o atom.o -lgtest
+		g++ -o hw6 mainScanner.o term.o atom.o -lgtest
 else
-		g++ -o hw5 mainScanner.o term.o atom.o -lgtest -lpthread
+		g++ -o hw6 mainScanner.o term.o atom.o -lgtest -lpthread
 endif
 utAtom: mainAtom.o atom.o term.o
 	g++	-o	utAtom mainAtom.o	term.o atom.o -lgtest -lpthread
@@ -27,6 +27,6 @@ mainScanner.o: mainScanner.cpp utScanner.h scanner.h struct.h utParser.h parser.
 
 
 clean:
-	rm -f *.o *hw5
+	rm -f *.o *hw6
 stat:
 	wc *.h *.cpp

@@ -23,6 +23,10 @@ public:
     }
     return _inst->match(term);
   }
+  Term *getinst()
+  {
+    return _inst;
+  }
 private:
   Term * _inst;
 };
