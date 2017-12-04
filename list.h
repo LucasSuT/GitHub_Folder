@@ -8,6 +8,7 @@
 #include "atom.h"
 using std::vector;
 
+class Iterator;
 class List : public Term {
 public:
   string symbol() const
@@ -34,7 +35,7 @@ public:
   {
 
   }
-  List (vector<Term *>  & elements):_elements(elements)
+  List (vector<Term *> const & elements):_elements(elements)
   {
   }
   Term * head() const
@@ -63,6 +64,14 @@ public:
   {
     return _elements;
   }
+  Term * args(int index) {
+    return _elements[index];
+  }
+  int arity() const {
+    return _elements.size();
+  }
+  Iterator * createDFSIterator();
+  Iterator * createBFSIterator();
 private:
   vector<Term *> _elements;
 

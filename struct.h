@@ -8,6 +8,7 @@
 
 using std::string;
 
+class Iterator;
 class Struct: public Term {
 public:
   Struct(Atom name, std::vector<Term *> args): _name(name) {
@@ -47,6 +48,9 @@ public:
     ret  += (*it)->value()+")";
     return ret;
   }
+  Iterator * createIterator();
+  Iterator * createDFSIterator();
+  Iterator * createBFSIterator();
 private:
   Atom _name;
   std::vector<Term *> _args;

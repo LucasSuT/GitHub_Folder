@@ -1,32 +1,25 @@
 #all: utList utAtom utVariable
-all: hw6
+all: hw7
 
-hw6:	mainScanner.o term.o atom.o
+hw7:	mainIterator.o term.o atom.o struct.o list.o
 ifeq (${OS}, Windows_NT)
-		g++ -o hw6 mainScanner.o term.o atom.o -lgtest
+		g++ -o hw7 mainIterator.o term.o atom.o struct.o list.o -lgtest
 else
-		g++ -o hw6 mainScanner.o term.o atom.o -lgtest -lpthread
+		g++ -o hw7 mainIterator.o term.o atom.o struct.o list.o -lgtest -lpthread
 endif
-utAtom: mainAtom.o atom.o term.o
-	g++	-o	utAtom mainAtom.o	term.o atom.o -lgtest -lpthread
-utVariable: mainVariable.o atom.o term.o
-	g++	-o	utVariable mainVariable.o	term.o atom.o -lgtest -lpthread
-
-mainVariable.o: mainVariable.cpp utVariable.h variable.h term.h
-	g++ -std=gnu++11 -c mainVariable.cpp
-mainAtom.o: mainAtom.cpp utAtom.h
-	g++ -std=gnu++11 -c mainAtom.cpp
-mainList.o: mainList.cpp utList.h
-	g++ -std=gnu++11 -c mainList.cpp
+list.o:list.cpp list.h
+	g++ -std=gnu++11 -c list.cpp
+struct.o:struct.cpp struct.h
+	g++ -std=gnu++11 -c struct.cpp
 term.o: term.cpp term.h variable.h
 	g++ -std=gnu++11 -c term.cpp
 atom.o: atom.cpp atom.h term.h number.h
 	g++ -std=gnu++11 -c atom.cpp
-mainScanner.o: mainScanner.cpp utScanner.h scanner.h struct.h utParser.h parser.h list.h
-	g++ -std=gnu++11 -c mainScanner.cpp
+mainIterator.o: mainIterator.cpp utIterator.h
+	g++ -std=gnu++11 -c mainIterator.cpp
 
 
 clean:
-	rm -f *.o *hw6
+	rm -f *.o *hw7
 stat:
 	wc *.h *.cpp

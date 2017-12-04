@@ -1,5 +1,6 @@
 #include "term.h"
 #include "variable.h"
+#include "iterator.h"
 #include <string>
 #include <sstream>
 #include <typeinfo>
@@ -9,6 +10,11 @@ using std::type_info;
 
 //string Term::symbol() const {return _symbol;}
 //string Term::value() const {return symbol();}
+Iterator * Term::createIterator()
+{
+  return new NullIterator(this);
+}
+
 bool Term::match(Term & a){
   if (typeid(a) ==  typeid(Variable))
   {

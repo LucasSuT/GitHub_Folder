@@ -10,7 +10,7 @@
 //#include "atom.h"
 //#include "variable.h"
 class Variable;
-
+class Iterator;
 using namespace std;
 
 class Term{
@@ -18,6 +18,7 @@ public:
   virtual string symbol() const{return _symbol;}
   virtual string value() const{return symbol();}
   virtual Term *getinst(){return nullptr;}
+  virtual Iterator * createIterator();
   virtual Term * args(int index)
   {
     return nullptr;
