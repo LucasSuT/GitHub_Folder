@@ -4,7 +4,7 @@
 #include "struct.h"
 #include "list.h"
 #include <queue>
-
+/*
 class Iterator {
 public:
   virtual void first() = 0;
@@ -197,4 +197,78 @@ private:
   Term *_term;
   std::vector<Term *> _terms;
 };
+*/
+
+template <class T>
+class Iterators {
+public:
+  virtual void first() = 0;
+  virtual void next() = 0;
+  virtual T currentItem() const = 0;
+  virtual bool isDone() const = 0;
+};
+
+template <class T> class NullIterator :public Iterators<T>{
+public:
+  NullIterator(T n){}
+  void first(){}
+  void next(){}
+  T currentItem() const{
+      return nullptr;
+  }
+  bool isDone() const{
+    return true;
+  }
+};
+/*
+class StructIterator :public Iterators<Term*> {
+public:
+  friend class Struct;
+  void first() {
+    _index = 0;
+  }
+
+  Term* currentItem() const {
+    return _s->args(_index);
+  }
+
+  bool isDone() const {
+    return _index >= _s->arity();
+  }
+
+  void next() {
+    _index++;
+  }
+// protected:
+   StructIterator(Struct *s): _index(0), _s(s) {}
+private:
+  //StructIterator(Struct *s): _index(0), _s(s) {}
+  int _index;
+  Struct* _s;
+};
+
+class ListIterator :public Iterator {
+public:
+  ListIterator(List *list): _index(0), _list(list) {}
+
+  void first() {
+    _index = 0;
+  }
+
+  Term* currentItem() const {
+    return _list->args(_index);
+  }
+
+  bool isDone() const {
+    return _index >= _list->arity();
+  }
+
+  void next() {
+    _index++;
+  }
+private:
+  int _index;
+  List* _list;
+};
+*/
 #endif

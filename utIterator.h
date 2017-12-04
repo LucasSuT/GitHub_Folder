@@ -8,7 +8,7 @@
 #include "term.h"
 #include "number.h"
 #include "iterator.h"
-
+/*
 TEST(iterator, first) {
     Number one(1);
     Variable X("X");
@@ -231,5 +231,5 @@ TEST(iterator, listFirstBFS) {
   ASSERT_EQ("Y", it->currentItem()->symbol());
   ASSERT_TRUE(it->isDone());
 }
-
+*/
 #endif

@@ -18,7 +18,7 @@ public:
   virtual string symbol() const{return _symbol;}
   virtual string value() const{return symbol();}
   virtual Term *getinst(){return nullptr;}
-  virtual Iterator * createIterator();
+  virtual Iterators* createIterator();
   virtual Term * args(int index)
   {
     return nullptr;
