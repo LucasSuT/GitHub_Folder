@@ -8,7 +8,7 @@
 #include "term.h"
 #include "number.h"
 #include "iterator.h"
-/*
+
 TEST(iterator, first) {
     Number one(1);
     Variable X("X");
@@ -17,7 +17,7 @@ TEST(iterator, first) {
     Struct t(Atom("t"), { &X, &two });
     Struct s(Atom("s"), { &one, &t, &Y });
     // StructIterator it(&s);
-    Iterator *itStruct = s.createIterator();
+    Iterator<Term*> *itStruct = s.createIterator();
     // Iterator& itStruct = it;
     // ASSERT_EQ(it.first()->symbol());
     itStruct->first();
@@ -39,12 +39,12 @@ TEST(iterator, nested_iterator) {
   Number two(2);
   Struct t(Atom("t"), { &X, &two });
   Struct s(Atom("s"), { &one, &t, &Y });
-  StructIterator it(&s);
+  StructIterator<Term*> it(&s);
   it.first();
   it.next();
   Struct *s2 = dynamic_cast<Struct *>(it.currentItem());
 
-  StructIterator it2(s2);
+  StructIterator<Term*> it2(s2);
   it2.first();
   ASSERT_EQ("X", it2.currentItem()->symbol());
   ASSERT_FALSE(it2.isDone());
@@ -62,8 +62,8 @@ TEST(iterator, firstList) {
     Number two(2);
     Struct t(Atom("t"), { &X, &two });
     List l({ &one, &t, &Y });
-    ListIterator it(&l);
-    Iterator* itList = &it;
+    ListIterator<Term*> it(&l);
+    Iterator<Term*>* itList = &it;
     itList->first();
     ASSERT_EQ("1", itList->currentItem()->symbol());
     ASSERT_FALSE(itList->isDone());
@@ -78,10 +78,10 @@ TEST(iterator, firstList) {
 
 TEST(iterator, NullIterator){
   Number one(1);
-  NullIterator nullIterator(&one);
+  NullIterator<Term*> nullIterator(&one);
   nullIterator.first();
   ASSERT_TRUE(nullIterator.isDone());
-  Iterator * it = one.createIterator();
+  Iterator<Term*> * it = one.createIterator();
   it->first();
   ASSERT_TRUE(it->isDone());
 }
@@ -93,7 +93,7 @@ TEST(iterator, structFirstDFS) {
   Number two(2);
   Struct t(Atom("t"), { &X, &two });
   Struct s(Atom("s"), { &one, &t, &Y });
-  Iterator *it = s.createDFSIterator();
+  Iterator<Term*> *it = s.createDFSIterator();
   it->first();
   ASSERT_EQ("1", it->currentItem()->symbol());
   it->next();
@@ -116,7 +116,7 @@ TEST(iterator, listFirstDFS) {
   // Struct s(Atom("s"), { &one, &t, &Y });
   List l({&X,&Y,&one,&two});
   List l2({&two,&l,&X});
-  Iterator *it = l2.createDFSIterator();
+  Iterator<Term*> *it = l2.createDFSIterator();
   it->first();
   ASSERT_EQ("2", it->currentItem()->symbol());
   it->next();
@@ -142,7 +142,7 @@ TEST(iterator, structSecondDFS) {
   List l({&X,&Y});
   Struct t(Atom("t"), { &X, &two,&l });
   Struct s(Atom("s"), { &one, &t, &Y });
-  Iterator *it = s.createDFSIterator();
+  Iterator<Term*> *it = s.createDFSIterator();
   it->first();
   ASSERT_EQ("1", it->currentItem()->symbol());
   it->next();
@@ -171,7 +171,7 @@ TEST(iterator, ListSecondDFS) {
   Struct t(Atom("t"), { &X, &two });
   List l2;
   List l({&X,&Y, &t, &l2});
-  Iterator *it = l.createDFSIterator();
+  Iterator<Term*> *it = l.createDFSIterator();
   it->first();
   ASSERT_EQ("X", it->currentItem()->symbol());
   it->next();
@@ -196,7 +196,7 @@ TEST(iterator, StructFirstBFS) {
   Number two(2);
   Struct t(Atom("t"), { &X, &two });
   Struct s(Atom("s"), { &one, &t, &Y });
-  Iterator *it = s.createBFSIterator();
+  Iterator<Term*> *it = s.createBFSIterator();
   it->first();
   ASSERT_EQ("1", it->currentItem()->symbol());
   it->next();
@@ -218,7 +218,7 @@ TEST(iterator, listFirstBFS) {
   Number two(2);
   List l({&X,&Y});
   List l2({&two,&l,&one});
-  Iterator *it = l2.createBFSIterator();
+  Iterator<Term*> *it = l2.createBFSIterator();
   it->first();
   ASSERT_EQ("2", it->currentItem()->symbol());
   it->next();
@@ -231,5 +231,51 @@ TEST(iterator, listFirstBFS) {
   ASSERT_EQ("Y", it->currentItem()->symbol());
   ASSERT_TRUE(it->isDone());
 }
-*/
+
+TEST(iterator, structFirstDFS3) {
+  Number one(1);
+  Variable X("X");
+  Variable Y("Y");
+  Number two(2);
+  Struct t(Atom("t"), { &X, &two });
+  Struct s(Atom("s"), { &one, &t, &Y });
+  Iterator<Term*> *it = s.createDFSIterator();
+  it->first();
+  ASSERT_EQ("1", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("t(X, 2)", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("X", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("2", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("Y", it->currentItem()->symbol());
+  ASSERT_TRUE(it->isDone());
+}
+
+TEST(iterator, listFirstDFS3) {
+  Number one(1);
+  Variable X("X");
+  Variable Y("Y");
+  Number two(2);
+  List l({&X,&Y,&one,&two});
+  List l2({&two,&l,&X});
+  Iterator<Term*> *it = l2.createDFSIterator();
+  it->first();
+  ASSERT_EQ("2", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("[X, Y, 1, 2]", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("X", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("Y", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("1", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("2", it->currentItem()->symbol());
+  it->next();
+  ASSERT_EQ("X", it->currentItem()->symbol());
+  ASSERT_TRUE(it->isDone());
+}
+
 #endif

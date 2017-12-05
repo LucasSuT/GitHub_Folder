@@ -1,13 +1,11 @@
 #include "list.h"
 #include "iterator.h"
-/*
-Iterator * List::createDFSIterator()
+Iterator<Term*> * List::createDFSIterator()
 {
-  return new DFSIterator(this);
+  return new DFSIterator<Term*>(this);
 }
 
-Iterator * List::createBFSIterator()
+Iterator<Term*> * List::createBFSIterator()
 {
-  return new BFSIterator(this);
+  return new BFSIterator<Term*>(this);
 }
-*/

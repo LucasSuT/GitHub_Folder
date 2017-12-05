@@ -8,6 +8,7 @@
 #include "atom.h"
 using std::vector;
 
+template <class T>
 class Iterator;
 class List : public Term {
 public:
@@ -70,8 +71,8 @@ public:
   int arity() const {
     return _elements.size();
   }
-  Iterator * createDFSIterator();
-  Iterator * createBFSIterator();
+  Iterator<Term*> * createDFSIterator();
+  Iterator<Term*> * createBFSIterator();
 private:
   vector<Term *> _elements;
 

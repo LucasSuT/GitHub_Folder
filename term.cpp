@@ -10,10 +10,9 @@ using std::type_info;
 
 //string Term::symbol() const {return _symbol;}
 //string Term::value() const {return symbol();}
-Iterators* Term::createIterator()
+Iterator<Term*> * Term::createIterator()
 {
-  return nullptr;
-  //return new NullIterator(this);
+  return new NullIterator<Term*>(this);
 }
 
 bool Term::match(Term & a){
