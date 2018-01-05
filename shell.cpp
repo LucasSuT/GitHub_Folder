@@ -6,37 +6,40 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    string input, part, code = "";
+    string input, part, all = "";
     stringstream inputStream;
     Parser *parser;
-    while (true) {
-        while ( input == "" || input.back() != '.') {
+    while (true)
+    {
+        while ( input == "" || input.back() != '.')
+        {
             if (input == "" )
                 cout << "?- ";
-            else 
+            else
                 cout << "|  ";
             getline(cin, input);
             inputStream << input;
-            while ( inputStream >> part) 
-                code += part ;
-            
-            inputStream.str("");  // must have 
-            inputStream.clear();  // for reuse inputStream
+            while ( inputStream >> part)all += part ;
+            inputStream.str("");
+            inputStream.clear();
         }
-        
-        if ( code == "halt.") 
-            break; 
-        else {
-            parser = new Parser(Scanner(code));
-            try {
+
+        if ( all == "halt.")
+            break;
+        else
+        {
+            parser = new Parser(Scanner(all));
+            try
+            {
                 parser->buildExpression();
                 cout << parser->result() << endl;
             }
-            catch( string &errorMsg) {
-                cout << errorMsg << endl;
+            catch( string &error)
+            {
+                cout << error << endl;
             }
         }
-        code = "";
+        all = "";
         input = "";
     }
 

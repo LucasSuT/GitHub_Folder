@@ -14,17 +14,13 @@ else
 	g++ -o shell shell.o struct.o list.o atom.o -lgtest -lpthread
 endif
 
-shell.o:  shell.cpp atom.h list.h scanner.h parser.h global.h \
-		  variable.h struct.h iterator.h \
-		  struct.o list.o atom.o
+shell.o:  shell.cpp atom.h list.h scanner.h parser.h global.h variable.h struct.h iterator.h struct.o list.o atom.o
 	g++ -std=gnu++0x -c shell.cpp
 
-mainExp.o: mainExp.cpp atom.h list.h scanner.h parser.h global.h node.h\
-		   variable.h struct.h iterator.h exception.h expression.h  number.h\
-		   struct.o list.o atom.o
+mainExp.o: mainExp.cpp atom.h list.h scanner.h parser.h global.h node.h variable.h struct.h iterator.h exception.h expression.h  number.h struct.o list.o atom.o
 	g++ -std=gnu++0x -c mainExp.cpp
 
-atom.o: atom.cpp atom.h variable.h 
+atom.o: atom.cpp atom.h variable.h
 	g++ -std=gnu++0x -c atom.cpp
 
 list.o: list.cpp list.h number.h atom.o

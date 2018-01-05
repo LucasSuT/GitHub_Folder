@@ -272,7 +272,7 @@ TEST(Shell, disjunctionMatching5) {
   try {
     p.buildExpression();
     std::string result = p.result();
-    //ASSERT_EQ("X = 1; true; Y = 2.", result);
+    // ASSERT_EQ("X = 1; true; Y = 2.", result);
   } catch (std::string &msg) {
     FAIL() << msg;
   }
@@ -291,18 +291,5 @@ TEST(Shell, disjunctionMatching6) {
     FAIL() << msg;
   }
 }
-
-
-// TEST(Shell, exceptionMissingPeriodToken) {
-//   Scanner s("X=1");
-//   Parser p(s);
-//   try {
-//     p.buildExpression();
-//     // std::string result = p.result();
-//     FAIL() << "It should throw an exception: Missing token '.'";
-//   } catch (std::string &msg) {
-//     ASSERT_EQ("Missing token '.'", msg);
-//   }
-// }
 
 #endif

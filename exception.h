@@ -9,10 +9,10 @@
 #include "scanner.h"
 #include "iterator.h"
 /**
- * 
+ *
  * Here are some examples for exception handling,
  * the actual testing way is base on your implementation.
- * 
+ *
  */
 
 TEST(Shell, exception_OnlyVariable) {
