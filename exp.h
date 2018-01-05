@@ -31,7 +31,8 @@ public:
 
   std::string getResult() {
     bool legal = evaluate();
-    if (legal && _left->symbol() != _right->symbol()) {
+    if (legal && _left->symbol() != _right->symbol())
+    {
       if (_left->getVariable() != nullptr )
         return _left->symbol() + " = " + _right->value();
       else if (_right->getVariable() != nullptr )
@@ -63,9 +64,9 @@ public:
 
     if (legal && _left->getResult() == "true" && _right->getResult() == "true")
       return "true";
-    else if ( legal && _left->getResult() ==  _right->getResult())
-      return _left->getResult();
     else if ( legal && _left->getResult().find( _right->getResult()) != string::npos ) // some parts have existed in left side
+      return _left->getResult();
+    else if ( legal && _left->getResult() ==  _right->getResult())
       return _left->getResult();
     else if ( legal && _left->getResult() == "true" )
       return _right->getResult();

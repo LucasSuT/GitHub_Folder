@@ -27,21 +27,17 @@ public:
     _currentToken = token;
     if(token == VAR)
     {
-      for (int i = 0; i < _variableTable.size(); i++)
+      for (int i = 0; i < _vTable.size(); i++)
       {
-        if ( symtable[_scanner.tokenValue()].first == _variableTable[i]->symbol())
+        if ( symtable[_scanner.tokenValue()].first == _vTable[i]->symbol())
         {
-          return _variableTable[i];
+          return _vTable[i];
         }
       }
 
       Variable *var = new Variable(symtable[_scanner.tokenValue()].first);
-      _variableTable.push_back(var);
+      _vTable.push_back(var);
       return var;
-    }
-    else if(token == NUMBER)
-    {
-      return new Number(_scanner.tokenValue());
     }
     else if(token == ATOM || token == ATOMSC)
     {
@@ -51,6 +47,10 @@ public:
         return structure();
       }
       else return atom;
+    }
+    else if(token == NUMBER)
+    {
+      return new Number(_scanner.tokenValue());
     }
     else if(token == '[')
     {
@@ -126,7 +126,7 @@ public:
     // std::cout << "!!!current: " << _scanner.currentChar() << "\n" ;
     if (_scanner.currentChar() == ';')
     {
-      _variableTable.clear();
+      _vTable.clear();
       createTerm();
       _scanner.peekNextToken();
       if (_scanner.tokenValue() == NONE )
@@ -216,6 +216,6 @@ private:
   Scanner _scanner;
   int _currentToken;
   stack<Exp*> _expStack;
-  vector<Variable *> _variableTable;
+  vector<Variable *> _vTable;
 };
 #endif
