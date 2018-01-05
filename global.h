@@ -7,7 +7,7 @@ using std::pair;
 
 #include <string>
 using std::string;
-using namespace std;
+
 const int NONE = -1; // no tokenValue
 
 // tokens return by the scanner
@@ -52,7 +52,6 @@ bool symbolExist(string s, int & val) {
   found = symtable.end() != it;
   if (found)
    val = it - symtable.begin();
-   //cout<<val<<"!!!!!!!!";
 
   return found;
 }
